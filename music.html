@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="th" data-mode="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>เพลงกัส 🎶</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;700&family=Mitr:wght@400;500&family=Sriracha&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="music.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">← กลับหน้าหลัก</a>
+        <div class="nav-right">
+            <button class="mode-btn" id="modeToggle" aria-label="Toggle Theme"></button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-inner">
+                <span class="hero-badge">OUR PLAYLIST</span>
+                
+                <h1 class="hero-title">
+                    <span class="hi">เพลง</span>
+                <br>
+                    ส่งเพลงนี้มาจีบ <span class="heart">🎶</span>
+                </h1>
+
+                <div class="player-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/1enRCDttUr0?autoplay=0&rel=0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+                <div class="quote-container">
+                    <p id="random-quote">กำลังนึกคำจีบอยู่ค้าบบบ... ✨</p>
+                </div>
+
+                <div class="hero-btns">
+                    <a href="https://youtube.com/playlist?list=PLw264t7f7ItAMZd9nABN8H1wZYy0EvdcB" target="_blank" class="btn-main btn-fill">
+                        🎧 เปิดฟังลิสต์ทั้งหมดบน YouTube
+                    </a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <script src="music.js"></script>
+</body>
+</html>

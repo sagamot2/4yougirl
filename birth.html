@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="th" data-mode="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All about you 🎂</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;700&family=Mitr:wght@400;500&family=Sriracha&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="birth.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">← กลับหน้าหลัก</a>
+        <div class="nav-right">
+            <button class="mode-btn" id="modeToggle"></button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-inner">
+                <span class="hero-badge">PROFILE</span>
+                <h1 class="hero-title">All about you 🎂</h1>
+                
+                <div class="info-card">
+                    <h2 class="rainbow-text">ข้อมูลคนน่ารัก</h2>
+                    <ul class="info-list">
+                        <li><strong>วันเกิด:</strong>ความลับ</li>
+                        <li><strong>ส่วนสูง:</strong> หลาย ซม. อยู่</li>
+                        <li><strong>สถานะ:</strong> <span id="current-status">เป็นไรกันน้อออออ</span></li>
+                    </ul>
+
+                    <div class="edit-status-box">
+                        <input type="text" id="status-input" placeholder="พิมพ์สถานะใหม่...">
+                        <button id="update-status-btn" class="btn-small">เปลี่ยนเลย</button>
+                    </div>
+
+                    <p class="note">ไว้มาเพิ่มให้อีกข้อมูลยังไม่เยอะ ✨</p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <script src="birth.js"></script>
+</body>
+</html>

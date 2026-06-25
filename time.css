@@ -1,0 +1,91 @@
+:root { --tr: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
+[data-mode="dark"] { --bg: #13040c; --bg2: #1e0812; --bg3: #260d1a; --nav-bg: #1a060f; --border: #3d1428; --border2: #5a2038; --acc: #e0607e; --acc2: #c0446e; --acc-dim: #6b1f35; --text: #f5d5e0; --text2: #c08090; --text3: #7a4558; --card-bg: rgba(32, 11, 22, 0.8); }
+[data-mode="light"] { --bg: #fff0f5; --bg2: #fff; --bg3: #fde8f2; --nav-bg: #fff; --border: #f4c0d1; --border2: #e896b4; --acc: #c0446e; --acc2: #993556; --acc-dim: #fce4f0; --text: #2d0020; --text2: #8b3060; --text3: #c090b0; --card-bg: rgba(255, 255, 255, 0.8); }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Anuphan', sans-serif; background: var(--bg); color: var(--text); transition: var(--tr); min-height: 100vh; overflow-x: hidden; }
+
+.navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; height: 58px; background: var(--nav-bg); border-bottom: 1px solid var(--border); transition: var(--tr); }
+.navbar-brand { font-family: 'Mitr', sans-serif; font-size: 0.95rem; color: var(--text2); text-decoration: none; transition: var(--tr); }
+.navbar-brand:hover { color: var(--text); }
+.mode-btn { width: 38px; height: 22px; border-radius: 50px; border: 1.5px solid var(--border2); background: var(--bg3); cursor: pointer; position: relative; transition: var(--tr); }
+.mode-btn::after { content: ''; position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; border-radius: 50%; background: var(--acc); transition: transform 0.3s; }
+[data-mode="light"] .mode-btn::after { transform: translateX(16px); }
+
+main { min-height: 100vh; display: flex; flex-direction: column; padding-top: 58px; }
+.hero { flex: 1; display: flex; align-items: center; justify-content: center; padding: 48px 24px; text-align: center; }
+.hero-inner { max-width: 450px; width: 100%; animation: fadeUp 0.7s ease both; }
+.hero-badge { display: inline-block; font-size: 0.68rem; letter-spacing: 3px; color: var(--acc); border: 1px solid var(--border2); border-radius: 50px; padding: 5px 16px; margin-bottom: 15px; background: var(--acc-dim); }
+.hero-title { font-family: 'Sriracha', cursive; font-size: 2.5rem; color: var(--text); margin-bottom: 20px; }
+
+.locked-box {
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 40px 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: var(--tr);
+}
+.lock-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    animation: pulse 2s infinite;
+}
+.locked-box h2 {
+    font-family: 'Mitr', sans-serif;
+    font-size: 1.5rem;
+    color: var(--acc);
+    margin-bottom: 10px;
+}
+.locked-box p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text2);
+    margin-bottom: 25px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.input-group input {
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--bg3);
+    color: var(--text);
+    font-family: 'Mitr', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: var(--tr);
+    text-align: center;
+}
+.input-group input:focus {
+    border-color: var(--acc);
+    box-shadow: 0 0 10px rgba(224, 96, 126, 0.3);
+}
+.btn-main {
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-family: 'Mitr', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.btn-fill {
+    background: var(--acc);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(224, 96, 126, 0.3);
+}
+.btn-fill:hover {
+    background: var(--acc2);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(224, 96, 126, 0.4);
+}
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }

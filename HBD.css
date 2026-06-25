@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Sarabun:wght@300;400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #fff5f8; display: flex; justify-content: center; padding: 20px 0 40px; min-height: 100vh; }
+.card { width: 340px; background: #fff5f8; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(200, 80, 130, 0.05); }
+canvas#bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+.content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; padding: 28px 20px 36px; }
+
+.ribbon { font-family: 'Sarabun', sans-serif; font-size: 11px; letter-spacing: 3px; color: #c45c8a; text-transform: uppercase; margin-bottom: 14px; opacity: 0; animation: fadeUp .8s .2s forwards; }
+.gif-top { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; border: 3px solid #f4c0d8; opacity: 0; animation: fadeUp .8s .35s forwards; box-shadow: 0 4px 20px rgba(200,80,130,.2); }
+
+.hearts-row { font-size: 18px; margin: 10px 0 6px; opacity: 0; animation: fadeUp .6s .5s forwards; display: flex; gap: 6px; align-items: center; }
+.heart-big { display: inline-block; animation: heartbeat 1.4s ease-in-out infinite; color: #e8608a; }
+.heart-sm { display: inline-block; animation: heartbeat 1.4s .2s ease-in-out infinite; font-size: 14px; opacity: .7; color: #e8608a; }
+
+@keyframes heartbeat { 0%, 100% { transform: scale(1); } 14% { transform: scale(1.25); } 28% { transform: scale(1); } }
+
+.to-text { font-family: 'Sarabun', sans-serif; font-size: 11px; color: #d4799f; letter-spacing: 2px; margin-bottom: 4px; opacity: 0; animation: fadeUp .7s .6s forwards; }
+.name { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 600; color: #b03070; line-height: 1; text-align: center; opacity: 0; animation: fadeUp .9s .7s forwards; }
+.name-th { font-family: 'Sarabun', sans-serif; font-size: 12px; color: #c97ba0; letter-spacing: 1px; margin-top: 3px; opacity: 0; animation: fadeUp .7s .85s forwards; }
+
+.gif-row { width: 100%; display: flex; justify-content: center; gap: 8px; margin: 14px 0 10px; opacity: 0; animation: fadeUp .8s 1s forwards; }
+.gif-side { width: calc(33.33% - 6px); aspect-ratio: 1/1; object-fit: cover; border-radius: 12px; border: 2px solid #f4c0d8; box-shadow: 0 3px 12px rgba(200,80,130,.15); }
+
+.divider { width: 100px; height: 1px; background: linear-gradient(90deg, transparent, #e8a0c0, transparent); margin: 10px 0; opacity: 0; animation: fadeIn .8s 1.1s forwards; }
+
+.msg-box {
+  width: 100%;
+  height: 140px;
+  overflow: hidden;
+  position: relative;
+  margin: 15px 0 20px 0; 
+  z-index: 10;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+  opacity: 0;
+  animation: fadeIn 1s 1.2s forwards; 
+}
+.msg-scroll {
+  font-family: 'Sarabun', sans-serif;
+  font-size: 14px;
+  color: #8a3060;
+  text-align: center;
+  line-height: 1.8;
+  position: absolute;
+  width: 100%;
+  animation: scrollUpText 20s linear infinite; 
+}
+.msg-box:hover .msg-scroll { animation-play-state: paused; }
+@keyframes scrollUpText { 0% { transform: translateY(140px); } 100% { transform: translateY(-100%); } }
+
+.gif-bottom { width: 100%; max-width: 240px; border-radius: 16px; margin: 10px 0 16px; border: 2px solid #f4c0d8; opacity: 0; animation: fadeUp .8s 1.35s forwards; box-shadow: 0 4px 16px rgba(200,80,130,.15); }
+
+.date-wrap { opacity: 0; animation: fadeUp .8s 1.5s forwards; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.date { font-family: 'Sarabun', sans-serif; font-size: 11px; letter-spacing: 2px; color: #c45c8a; padding: 5px 18px; border: 1px solid #f0b8d0; border-radius: 20px; background: rgba(255,255,255,.6); }
+.from { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 13px; color: #d4a0b8; margin-top: 6px; }
+
+.cute-note {
+  font-family: 'Sarabun', sans-serif;
+  font-size: 13px;
+  color: #c45c8a;
+  margin-top: 24px;
+  text-align: center;
+  opacity: 0;
+  animation: fadeUp 0.8s 1.6s forwards;
+}
+.back-btn {
+  display: block;
+  width: fit-content; 
+  margin: 30px auto 20px;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, #f4a0c0, #e8608a);
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  border-radius: 20px;
+  font-family: 'Sarabun', sans-serif;
+  font-size: 18px;
+  box-shadow: 0 4px 15px rgba(232, 96, 138, 0.4);
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: fadeUp 0.8s 1.7s forwards;
+  z-index: 10;
+}
+
+.back-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(232, 96, 138, 0.6);
+}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }

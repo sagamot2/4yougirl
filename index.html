@@ -1,0 +1,135 @@
+<!-- 
+  ========================================================= 
+  ส่องหาพ่องมึงอ่อไอ้สัส! โค้ดกากๆ ไม่มีเหี้ยไรให้มึงดูหรอก
+  กูรู้ว่ามึงกด F12 เข้ามา เสือกไม่เข้าเรื่องนะมึงอะ
+  ปิดแล้วกลับไปเขียนโค้ดของมึงซะไป ไอ้ขี้เสือก 🖕 ควยยยยยย
+  ========================================================= 
+-->
+
+<!DOCTYPE html>
+<html lang="th" data-mode="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>For you girl 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500&family=Sriracha&family=Anuphan:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="index.css"/>
+  
+</head>
+<body>
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+<div id="progressBar"></div>
+
+<nav class="navbar">
+  <a href="index.html" class="navbar-brand">FOR YOU BA3E</a>
+
+  <div class="nav-right">
+    <span class="mode-icon" id="modeIcon" onclick="toggleMode()" title="สลับโหมด">🌙</span>
+    <button class="mode-btn" id="modeBtn" onclick="toggleMode()" aria-label="สลับ light/dark"></button>
+    
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main>
+  <section class="hero">
+    <div class="hero-inner">
+
+      <div class="hero-badge">✦ FOR YOU,  ✦</div>
+
+      <h1 class="hero-title">
+        <span class="hi">สวัสดี ♡</span>
+        <span class="acc-word">คุณผู้หญิง</span>
+        <span class="heart"> 💖</span>
+      </h1>
+
+      <p class="hero-sub">
+        ทำเว็บนี้มาจีบมั้ง<br>
+        รับรักกัสหน่อยยยดิ♡
+      </p>
+
+      <div class="menu-grid">
+        <a href="HBD.html" class="menu-item hbd-special">
+          <span class="mi-icon">🎉</span>
+          <div class="mi-text">
+            <span class="mi-title hbd-title-text">Happy Birthday</span>
+            <span class="mi-sub">วันเกิดออเจ้านั่นกระไร</span>
+          </div>
+        </a>
+
+        <a href="love.html" class="menu-item">
+          <span class="mi-icon">💌</span>
+          <div class="mi-text">
+            <span class="mi-title">Love</span>
+            <span class="mi-sub">ความลับ</span>
+          </div>
+        </a>
+        <a href="birth.html" class="menu-item">
+          <span class="mi-icon">🎂</span>
+          <div class="mi-text">
+            <span class="mi-title">About You</span>
+            <span class="mi-sub">เกี่ยวกับเธอ</span>
+          </div>
+        </a>
+        <a href="movie.html" class="menu-item">
+          <span class="mi-icon">🎬</span>
+          <div class="mi-text">
+            <span class="mi-title">Movie</span>
+            <span class="mi-sub">หนังที่ชอบ</span>
+          </div>
+        </a>
+        <a href="music.html" class="menu-item">
+          <span class="mi-icon">🎶</span>
+          <div class="mi-text">
+            <span class="mi-title">Music</span>
+            <span class="mi-sub">เพลงโปรด</span>
+          </div>
+        </a>
+        <a href="time.html" class="menu-item">
+          <span class="mi-icon">⏰</span>
+          <div class="mi-text">
+            <span class="mi-title">Our Time</span>
+            <span class="mi-sub">เวลา</span>
+          </div>
+        </a>
+        <a href="contack.html" class="menu-item">
+          <span class="mi-icon">📞</span>
+          <div class="mi-text">
+            <span class="mi-title">คลิกเพื่อ</span>
+            <span class="mi-sub">ติดต่อกัส</span>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="f-copy">&copy; 2026 <span>GUS</span>  💖</div>
+    <div class="f-right">
+      <span class="f-clock" id="liveClock">00:00:00</span>
+      <div class="f-dot"></div>
+    </div>
+  </footer>
+</main>
+
+<div id="ask-popup-overlay">
+  <div class="glass-popup">
+    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGtwYmxlbDI3cXd3MGNhdDI4eDZ6b3Awd2Y3YnQ4MTg2NndpYTRmeSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IknAViwxyUWLCMWswJ/giphy.gif" alt="Cute gif" class="popup-gif">
+    <h2>เป็นแฟนกันมั้ยครับ? 🥺</h2>
+    <p>ไม่รีบก็ได้ ชิวๆ อิอิ</p>
+    <input type="text" id="answerInput" class="popup-input" placeholder="พิมพ์คำตอบตรงนี้เลยย...">
+    <div class="popup-actions">
+      <button id="sendBtn" class="btn-send">ส่งคำตอบ 💌</button>
+      <button id="closePopupBtn" class="btn-cancel">ไว้ก่อนละกัน ปิดไปก่อน</button>
+    </div>
+  </div>
+</div>
+
+<script src="index.js"></script>
+</body>
+</html>

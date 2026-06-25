@@ -1,0 +1,161 @@
+:root { --tr: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
+[data-mode="dark"] { --bg: #13040c; --bg2: #1e0812; --bg3: #260d1a; --nav-bg: #1a060f; --border: #3d1428; --border2: #5a2038; --acc: #e0607e; --acc2: #c0446e; --acc-dim: #6b1f35; --text: #f5d5e0; --text2: #c08090; --text3: #7a4558; --card-bg: #200b16; }
+[data-mode="light"] { --bg: #fff0f5; --bg2: #fff; --bg3: #fde8f2; --nav-bg: #fff; --border: #f4c0d1; --border2: #e896b4; --acc: #c0446e; --acc2: #993556; --acc-dim: #fce4f0; --text: #2d0020; --text2: #8b3060; --text3: #c090b0; --card-bg: #fff; }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Anuphan', sans-serif; background: var(--bg); color: var(--text); transition: var(--tr); min-height: 100vh; overflow-x: hidden; }
+
+.navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; height: 58px; background: var(--nav-bg); border-bottom: 1px solid var(--border); transition: var(--tr); }
+.navbar-brand { font-family: 'Mitr', sans-serif; font-size: 0.95rem; color: var(--text2); text-decoration: none; transition: var(--tr); }
+.navbar-brand:hover { color: var(--text); }
+.mode-btn { width: 38px; height: 22px; border-radius: 50px; border: 1.5px solid var(--border2); background: var(--bg3); cursor: pointer; position: relative; transition: var(--tr); }
+.mode-btn::after { content: ''; position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; border-radius: 50%; background: var(--acc); transition: transform 0.3s; }
+[data-mode="light"] .mode-btn::after { transform: translateX(16px); }
+
+main { min-height: 100vh; display: flex; flex-direction: column; padding-top: 58px; }
+.hero { flex: 1; display: flex; align-items: center; justify-content: center; padding: 30px 15px; text-align: center; }
+.hero-inner { max-width: 600px; width: 100%; animation: fadeUp 0.7s ease both; }
+.hero-badge { display: inline-block; font-size: 0.68rem; letter-spacing: 3px; color: var(--acc); border: 1px solid var(--border2); border-radius: 50px; padding: 5px 16px; margin-bottom: 15px; background: var(--acc-dim); }
+.hero-title { font-family: 'Sriracha', cursive; font-size: 2.2rem; color: var(--text); margin-bottom: 5px; }
+.subtitle { color: var(--text3); font-size: 0.95rem; margin-bottom: 25px; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.glass-box, .discord-box {
+    background: rgba(32, 11, 22, 0.4); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    text-align: left;
+}
+
+.step-text { font-size: 0.95rem; margin-bottom: 12px; color: var(--text2); font-weight: 500; }
+
+.cinema-options { display: flex; gap: 12px; }
+.cinema-card {
+    flex: 1;
+    background: var(--bg3);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 15px 10px;
+    cursor: pointer;
+    transition: var(--tr);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+}
+.cinema-card:hover { border-color: var(--border2); }
+.cinema-card.active {
+    background: var(--acc-dim);
+    border-color: var(--acc);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(224, 96, 126, 0.2);
+}
+.cinema-card .cinema-name { font-family: 'Mitr', sans-serif; font-size: 1.1rem; font-weight: 500; margin-bottom: 4px; }
+.cinema-card .cinema-branch { font-size: 0.8rem; color: var(--text3); }
+.cinema-card.active .cinema-branch { color: var(--text); }
+
+.input-group { display: flex; gap: 10px; }
+.input-group input {
+    flex: 1;
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg3);
+    color: var(--text);
+    font-family: 'Mitr', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: var(--tr);
+    width: 100%;
+}
+.input-group input:focus { border-color: var(--acc); box-shadow: 0 0 8px rgba(224, 96, 126, 0.3); }
+
+.btn-primary, .btn-discord {
+    background: var(--acc);
+    color: #fff;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 10px;
+    font-family: 'Mitr', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+}
+.btn-primary:hover, .btn-discord:hover {
+    background: var(--acc2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(224, 96, 126, 0.4);
+}
+.btn-upload {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 12px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: var(--tr);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+.btn-upload:hover { border-color: var(--acc); background: var(--card-bg); }
+
+.iframe-wrapper {
+    width: 100%;
+    height: 65vh; 
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid var(--border);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    background: #ffffff; 
+    position: relative;
+    margin-bottom: 20px;
+}
+.iframe-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.btn-back-select {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    background: var(--bg3);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-family: 'Mitr', sans-serif;
+    font-size: 0.85rem;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition: var(--tr);
+}
+.btn-back-select:hover {
+    background: var(--acc);
+    color: #fff;
+    border-color: var(--acc);
+}
+
+.preview-wrapper { margin-top: 15px; display: none; position: relative; width: fit-content; text-align: left; animation: fadeUp 0.3s ease; }
+.preview-wrapper img { max-height: 150px; max-width: 100%; border-radius: 8px; border: 2px solid var(--border); }
+.remove-btn { position: absolute; top: -10px; right: -10px; background: var(--acc); color: white; border: none; border-radius: 50%; width: 28px; height: 28px; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.3); transition: var(--tr); }
+
+@media (max-width: 480px) {
+    .mobile-stack { flex-direction: column; }
+    .hero-title { font-size: 1.8rem; }
+    .cinema-card .cinema-name { font-size: 0.95rem; }
+}
