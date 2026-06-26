@@ -1,11 +1,3 @@
-<!-- 
-  ========================================================= 
-  ส่องหาพ่องมึงอ่อไอ้สัส! โค้ดกากๆ ไม่มีเหี้ยไรให้มึงดูหรอก
-  กูรู้ว่ามึงกด F12 เข้ามา เสือกไม่เข้าเรื่องนะมึงอะ
-  ปิดแล้วกลับไปเขียนโค้ดของมึงซะไป ไอ้ขี้เสือก 🖕 ควยยยยยย
-  ========================================================= 
--->
-
 <!DOCTYPE html>
 <html lang="th" data-mode="dark">
 <head>
@@ -29,9 +21,6 @@
   <div class="nav-right">
     <span class="mode-icon" id="modeIcon" onclick="toggleMode()" title="สลับโหมด">🌙</span>
     <button class="mode-btn" id="modeBtn" onclick="toggleMode()" aria-label="สลับ light/dark"></button>
-    
-      <span></span><span></span><span></span>
-    </button>
   </div>
 </nav>
 
@@ -79,14 +68,14 @@
           <span class="mi-icon">🎬</span>
           <div class="mi-text">
             <span class="mi-title">Movie</span>
-            <span class="mi-sub">หนังที่ชอบ</span>
+            <span class="mi-sub">ดูหนัง</span>
           </div>
         </a>
         <a href="music.html" class="menu-item">
           <span class="mi-icon">🎶</span>
           <div class="mi-text">
             <span class="mi-title">Music</span>
-            <span class="mi-sub">เพลงโปรด</span>
+            <span class="mi-sub">เพลง</span>
           </div>
         </a>
         <a href="time.html" class="menu-item">
@@ -119,14 +108,38 @@
 
 <div id="ask-popup-overlay">
   <div class="glass-popup">
-    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGtwYmxlbDI3cXd3MGNhdDI4eDZ6b3Awd2Y3YnQ4MTg2NndpYTRmeSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IknAViwxyUWLCMWswJ/giphy.gif" alt="Cute gif" class="popup-gif">
-    <h2>เป็นแฟนกันมั้ยครับ? 🥺</h2>
-    <p>ไม่รีบก็ได้ ชิวๆ อิอิ</p>
-    <input type="text" id="answerInput" class="popup-input" placeholder="พิมพ์คำตอบตรงนี้เลยย...">
-    <div class="popup-actions">
-      <button id="sendBtn" class="btn-send">ส่งคำตอบ 💌</button>
-      <button id="closePopupBtn" class="btn-cancel">ไว้ก่อนละกัน ปิดไปก่อน</button>
+    
+    <div id="step-1-ask">
+      <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGtwYmxlbDI3cXd3MGNhdDI4eDZ6b3Awd2Y3YnQ4MTg2NndpYTRmeSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IknAViwxyUWLCMWswJ/giphy.gif" alt="Cute gif" class="popup-gif">
+      <h2>อยากทำจมูกหรอครับอ้วน</h2>
+      <p>เป็นแฟนก่อนดิ เดะหามาให้ อิอิ</p>
+      <input type="text" id="answerInput" class="popup-input" placeholder="พิมพ์คำตอบตรงนี้เลยย...">
+      <div class="popup-actions">
+        <button id="sendAnswerBtn" class="btn-send">ส่งคำตอบ 💌</button>
+        <button id="closePopupBtn1" class="btn-cancel">ไว้ก่อนละกัน ปิดไปก่อน</button>
+      </div>
     </div>
+
+    <div id="step-2-bank" style="display: none;">
+      <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGtwYmxlbDI3cXd3MGNhdDI4eDZ6b3Awd2Y3YnQ4MTg2NndpYTRmeSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IknAViwxyUWLCMWswJ/giphy.gif" alt="Cute gif" class="popup-gif">
+      <h2>ตอบน่ารักมาก! 💖</h2>
+      <p>งั้นกรอกเลขบัญชี/พร้อมเพย์ มาเลยอ้วน</p>
+      <input type="text" id="bankInput" class="popup-input" placeholder="กรอกเลขบัญชีหรือพร้อมเพย์...">
+      <div class="popup-actions">
+        <button id="sendBankBtn" class="btn-send">ส่งเลขบัญชีให้กัสมาาาา 💸</button>
+        <button id="closePopupBtn2" class="btn-cancel">ไม่ให้อะ</button>
+      </div>
+    </div>
+
+    <div id="step-3-success" style="display:none; padding: 10px 0;">
+      <div style="font-size: 3rem; margin-bottom: 10px;">✅</div>
+      <h2 style="color: var(--acc);">ได้รับแล้วครับ!</h2>
+      <p style="color: rgba(255,255,255,0.7); margin-bottom: 25px;">เดี๋ยวโอนให้พรุ่งนี้ตอนบ่ายๆ นะครับอ้วน 💖</p>
+      <div class="popup-actions">
+        <button id="closePopupBtn3" class="btn-cancel" style="border: 1px solid var(--acc); color: var(--text);">ปิดหน้าต่าง</button>
+      </div>
+    </div>
+
   </div>
 </div>
 
