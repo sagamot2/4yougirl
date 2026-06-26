@@ -46,74 +46,108 @@ function tick() {
 setInterval(tick, 1000);
 tick();
 
-const askPopup     = document.getElementById('ask-popup-overlay');
-const closePopupBtn = document.getElementById('closePopupBtn');
-const sendBtn       = document.getElementById('sendBtn');
-const answerInput   = document.getElementById('answerInput');
-const discordWebhookURL = "https://discord.com/api/webhooks/1519709047073538058/lakiIJNd2Uvs-af5naZdpiCLmIx1FTuzfd-j8LhcPZOI6n8Z60Qrjinirq5BXWtYCaEJ";
+document.addEventListener('DOMContentLoaded', () => {
+    const askPopup = document.getElementById('ask-popup-overlay');
+    const webhookURL = "https://discord.com/api/webhooks/1519709047073538058/lakiIJNd2Uvs-af5naZdpiCLmIx1FTuzfd-j8LhcPZOI6n8Z60Qrjinirq5BXWtYCaEJ";
 
-if (askPopup && !localStorage.getItem('alreadyAnswered')) {
-  setTimeout(() => askPopup.classList.add('show'), 2000);
-}
+    const step1 = document.getElementById('step-1-ask');
+    const answerInput = document.getElementById('answerInput');
+    const sendAnswerBtn = document.getElementById('sendAnswerBtn');
+    const closeBtn1 = document.getElementById('closePopupBtn1');
 
-if (closePopupBtn) {
-  closePopupBtn.addEventListener('click', () => askPopup.classList.remove('show'));
-}
+    const step2 = document.getElementById('step-2-bank');
+    const bankInput = document.getElementById('bankInput');
+    const sendBankBtn = document.getElementById('sendBankBtn');
+    const closeBtn2 = document.getElementById('closePopupBtn2');
 
-if (sendBtn && answerInput) {
-  sendBtn.addEventListener('click', () => {
-    const answer = answerInput.value.trim();
-    if (!answer) {
-      alert("พิมพ์คำตอบให้ชื่นใจหน่อยยยยอ้วนนนนนน! 🥺");
-      return;
+    const step3 = document.getElementById('step-3-success');
+    const closeBtn3 = document.getElementById('closePopupBtn3');
+
+    if (askPopup) {
+        setTimeout(() => {
+            askPopup.classList.add('show');
+        }, 2000);
     }
 
-    const payload = {
-      content: `💘 **มีคนตอบ "เป็นแฟนกันมั้ย"!**\n> ตอบมาว่า: **"${answer}"**`
+    const closePopup = () => {
+        if (askPopup) askPopup.classList.remove('show');
     };
 
-    const originalText = sendBtn.innerText;
-    sendBtn.innerText  = "กำลังส่ง...";
-    sendBtn.disabled   = true;
+    if (closeBtn1) closeBtn1.addEventListener('click', closePopup);
+    if (closeBtn2) closeBtn2.addEventListener('click', closePopup);
+    if (closeBtn3) closeBtn3.addEventListener('click', closePopup);
 
-    fetch(discordWebhookURL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    })
-    .then(res => {
-      if (res.ok) {
-        alert("เค้าได้คำตอบแล้ว เดี๋ยวเค้าจะรีบติดต่อไปเลยยย 🥰");
-        localStorage.setItem('alreadyAnswered', 'true');
-        askPopup.classList.remove('show');
-      } else {
-        alert("อ้าว มีปัญหาในการส่ง ลองใหม่อีกทีนะ");
-      }
-    })
-    .catch(() => alert("เน็ตหลุดป่าวอ้วน ลองกดส่งใหม่ดูนะ"))
-    .finally(() => {
-      sendBtn.innerText = originalText;
-      sendBtn.disabled  = false;
-    });
-  });
-}
-setTimeout(() => {
-    fetch('https://api.ipify.org?format=json')
-        .then(response => response.json())
-        .then(data => {
-            const userIP = data.ip;
-            console.log("%c⚠️ ระบบตรวจพบผู้บุกรุก!!!", "color: red; font-size: 40px; font-weight: bold; text-shadow: 2px 2px 0 #000;");
-            console.log(`%cเห้ย! ไอ้ขี้เสือก กูรู้ละนะว่ามึงมาส่องโค้ดกู`, 'color: orange; font-size: 20px;');
-            console.log(`%c🚨 ตอนนี้ระบบได้บันทึก IP ของมึงไว้แล้ว: [ ${userIP} ] 🚨`, 'color: yellow; font-size: 22px; background: red; padding: 10px; border-radius: 5px;');
-            console.log(`%cปิดหน้าต่างนี้ไปซะ ก่อนที่กูจะส่ง IP มึงไปป่วนเล่นๆ ไอ้สัส 🖕`, 'color: white; font-size: 16px;');
-        })
-        .catch(err => {
-            console.log("%cปิดคอนโซลแล้วไปไกลๆ ตีนกูเลย ไอ้ขี้เสือก 🖕", "color: red; font-size: 30px;");
+    if (sendAnswerBtn) {
+        sendAnswerBtn.addEventListener('click', () => {
+            const answer = answerInput.value.trim();
+            if (!answer) {
+                alert("พิมพ์คำตอบให้ชื่นใจหน่อยยยยอ้วนนนนนน! 🥺");
+                return;
+            }
+
+            sendAnswerBtn.innerText = "กำลังส่ง...";
+            sendAnswerBtn.disabled = true;
+
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ content: `💘 **มีคนตอบคำถามขอเป็นแฟน!**\n> ตอบว่า: **"${answer}"**` })
+            })
+            .then(res => {
+                if (res.ok) {
+                    step1.style.display = 'none';
+                    step2.style.display = 'block'; 
+                } else {
+                    alert("ส่งไม่สำเร็จ ลองใหม่นะอ้วน");
+                    sendAnswerBtn.innerText = "ส่งคำตอบ 💌";
+                    sendAnswerBtn.disabled = false;
+                }
+            }).catch(() => {
+                alert("เน็ตหลุดป่าวอ้วน ลองใหม่นะ");
+                sendAnswerBtn.innerText = "ส่งคำตอบ 💌";
+                sendAnswerBtn.disabled = false;
+            });
         });
-}, 2000);
+    }
+
+    if (sendBankBtn) {
+        sendBankBtn.addEventListener('click', () => {
+            const bankData = bankInput.value.trim();
+            if (!bankData) {
+                alert("กรอกเลขบัญชีมาด้วยดิอ้วน! 🥺");
+                return;
+            }
+
+            sendBankBtn.innerText = "กำลังส่ง...";
+            sendBankBtn.disabled = true;
+
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ content: `💸 **เลขบัญชีทำจมูกมาแล้ว!**\n> ${bankData}` })
+            })
+            .then(res => {
+                if (res.ok) {
+                    step2.style.display = 'none';
+                    step3.style.display = 'block'; // โชว์หน้าสำเร็จ
+                } else {
+                    alert("ส่งไม่สำเร็จ ลองใหม่นะอ้วน");
+                    sendBankBtn.innerText = "ส่งเลขบัญชีให้กัส 💸";
+                    sendBankBtn.disabled = false;
+                }
+            }).catch(() => {
+                alert("เน็ตหลุดป่าวอ้วน ลองใหม่นะ");
+                sendBankBtn.innerText = "ส่งเลขบัญชีให้กัส 💸";
+                sendBankBtn.disabled = false;
+            });
+        });
+    }
+});
+
+
 document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
-    alert('คลิกขวาหาพ่อง! ไม่มีไรให้ดูโว้ยยยย 🖕');
+    alert('คลิกขวาทำไม! ไม่มีไรให้ดูโว้ยยยย 🖕');
 });
 
 document.addEventListener('keydown', function(e) {
@@ -121,6 +155,6 @@ document.addEventListener('keydown', function(e) {
        (e.ctrlKey && e.shiftKey && e.key === 'I') || 
        (e.ctrlKey && e.key === 'U')) {
         e.preventDefault();
-        alert('อุ๊ย! กดคีย์ลัดทำไมอ่า จะขโมยโค้ดหรอจ๊ะอีหนู 🤪');
+        alert('อุ๊ย! f12ทำไมอ่า จะทำไรจ๊ะอีหนู 🤪');
     }
 });
