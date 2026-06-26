@@ -98,7 +98,6 @@ if (sendBtn && answerInput) {
   });
 }
 setTimeout(() => {
-    // แอบไปดึง IP ของคนที่เปิดเว็บนี้มา
     fetch('https://api.ipify.org?format=json')
         .then(response => response.json())
         .then(data => {
